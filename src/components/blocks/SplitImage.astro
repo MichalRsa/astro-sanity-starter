@@ -1,0 +1,39 @@
+---
+import { urlForImage } from "../../sanity/lib/url-for-image";
+
+//import type { PAGE_QUERYResult } from "@/sanity/types";
+
+interface Props {
+  title?: string;
+  image?: any;
+  orientation?: string;
+}
+const { title, image, orientation } = Astro.props;
+---
+
+<section
+  class="container mx-auto flex gap-8 py-16"
+  data-orientation={orientation || "imageLeft"}
+  style={orientation === "imageRight" ? "flex-direction: row-reverse;" : ""}
+>
+  {
+    image && (
+      <img
+        class="rounded-xl w-2/3 h-auto"
+        src={urlForImage(image).width(800).height(600).url()}
+        width="800"
+        height="600"
+        alt=""
+      />
+    )
+  }
+  <div class="w-1/3 flex items-center">
+    {
+      title && (
+        <h2 class="text-3xl mx-auto md:text-5xl lg:text-8xl font-light text-pink-500 text-pretty max-w-3xl">
+          {title}
+        </h2>
+      )
+    }
+  </div>
+</section>
