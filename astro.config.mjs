@@ -21,8 +21,9 @@ export default defineConfig({
       dataset: "production",
       // Set useCdn to false if you're building statically.
       useCdn: false,
+      apiVersion: "2025-02-10",
+      studioBasePath: "/studio",
     }),
     react(),
   ],
 });
-
