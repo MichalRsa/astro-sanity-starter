@@ -7,10 +7,12 @@ import { featuresType } from "./blocks/featuresType";
 import { heroType } from "./blocks/heroType";
 import { splitImageType } from "./blocks/splitImageType";
 import type { SchemaTypeDefinition } from "sanity";
+import { blockContentType } from "./blockContentType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     // ...all your existing schema types
+    blockContentType,
     pageType,
     pageBuilderType,
     faqType,
