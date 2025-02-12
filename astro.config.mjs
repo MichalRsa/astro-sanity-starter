@@ -10,6 +10,12 @@ import react from "@astrojs/react";
 
 import netlify from "@astrojs/netlify";
 
+import { loadEnv } from "vite";
+
+const env = loadEnv("", process.cwd(), "PUBLIC_SANITY_VISUAL_EDITING_ENABLED");
+
+console.log(env);
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -22,7 +28,7 @@ export default defineConfig({
       projectId: "0azllx90",
       dataset: "production",
       // Set useCdn to false if you're building statically.
-      useCdn: false,
+      useCdn: env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED === "true",
       apiVersion: "2025-02-10",
       studioBasePath: "/studio",
       stega: {
@@ -32,7 +38,8 @@ export default defineConfig({
     react(),
   ],
 
-  output: "server",
+  output:
+    env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED === "true" ? "server" : "static",
   adapter: netlify(),
 });
 
