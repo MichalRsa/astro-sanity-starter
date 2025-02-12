@@ -8,6 +8,8 @@ import sitemap from "@astrojs/sitemap";
 import sanity from "@sanity/astro";
 import react from "@astrojs/react";
 
+import netlify from "@astrojs/netlify";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -29,4 +31,6 @@ export default defineConfig({
     }),
     react(),
   ],
+
+  adapter: netlify(),
 });
